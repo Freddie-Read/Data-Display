@@ -1,3 +1,6 @@
+//Run 'tsc' in the terminal to cast to a .js file
+
+// Custom objects are used to define the JSON properties we care about
 type Human = { firstName : string, lastName : string, title : string, gender : string, username : string, password : string, age : number, picture : string}
 
 type Family = {
@@ -6,12 +9,13 @@ type Family = {
     size : number;
 }
 
+//HTML Elements
 var btn : HTMLButtonElement = document.getElementById("showFamilyBtn") as HTMLButtonElement;
-
 var container : HTMLDivElement = document.getElementById("showFamily") as HTMLDivElement;
 
 btn.addEventListener("click", function()
 {
+    //AJAX Request Start
     var req = new XMLHttpRequest();
 
     req.open("GET", "https://randomuser.me/api/?results=15");
@@ -71,6 +75,12 @@ btn.addEventListener("click", function()
     req.send();
 });
 
+
+/**
+ * Renders HTML based on the JSON data
+ * @param family 
+ * @returns void
+ */
 function renderHTML(family : Family) : void
 {
     var htmlString : string = "";
